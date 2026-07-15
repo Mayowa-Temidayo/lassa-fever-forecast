@@ -1,0 +1,48 @@
+from lassa_fever_forecast.tasks.metadata_models import DatasetMetadata
+
+DATASETS = [
+    DatasetMetadata(
+        dataset_id="DS001",
+        dataset_name="Lassa Fever Surveillance",
+        category="Epidemiology",
+        source="NCDC",
+        acquisition="Manual",
+        frequency="Weekly",
+        target=True,
+        status="Planned",
+        version="1.0",
+    ),
+    DatasetMetadata(
+        dataset_id="DS002",
+        dataset_name="NASA POWER Weather",
+        category="Climate",
+        source="NASA POWER",
+        acquisition="API",
+        frequency="Daily",
+        target=False,
+        status="Planned",
+        version="1.0",
+    ),
+    DatasetMetadata(
+        dataset_id="DS003",
+        dataset_name="Population Estimates",
+        category="Demography",
+        source="GRID3",
+        acquisition="Manual",
+        frequency="Annual",
+        target=False,
+        status="Planned",
+        version="1.0",
+    ),
+    DatasetMetadata(
+        dataset_id="DS004",
+        dataset_name="Administrative Boundaries",
+        category="Geography",
+        source="GRID3",
+        acquisition="Manual",
+        frequency="Rare",
+        target=False,
+        status="Planned",
+        version="1.0",
+    ),
+]

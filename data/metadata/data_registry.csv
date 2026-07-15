@@ -1,0 +1,5 @@
+dataset_id,dataset_name,category,source,acquisition,frequency,target,status,version
+DS001,Lassa Fever Surveillance,Epidemiology,NCDC,Manual,Weekly,True,Planned,1.0
+DS002,NASA POWER Weather,Climate,NASA POWER,API,Daily,False,Planned,1.0
+DS003,Population Estimates,Demography,GRID3,Manual,Annual,False,Planned,1.0
+DS004,Administrative Boundaries,Geography,GRID3,Manual,Rare,False,Planned,1.0
