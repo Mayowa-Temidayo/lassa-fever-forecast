@@ -33,13 +33,13 @@ def create_dictionary() -> None:
     """Generate empty data_dictionary.csv."""
 
     df = pd.DataFrame(
-        columns=[
-            "variable",
-            "description",
-            "dtype",
-            "units",
-            "dataset_id",
-        ]
+        {
+            "variable": pd.Series(dtype="string"),
+            "description": pd.Series(dtype="string"),
+            "dtype": pd.Series(dtype="string"),
+            "units": pd.Series(dtype="string"),
+            "dataset_id": pd.Series(dtype="string"),
+        }
     )
 
     df.to_csv(
@@ -52,11 +52,11 @@ def create_checksums() -> None:
     """Generate empty checksums.csv."""
 
     df = pd.DataFrame(
-        columns=[
-            "file",
-            "sha256",
-            "created_at",
-        ]
+        {
+            "file": pd.Series(dtype="string"),
+            "sha256": pd.Series(dtype="string"),
+            "created_at": pd.Series(dtype="string"),
+        }
     )
 
     df.to_csv(

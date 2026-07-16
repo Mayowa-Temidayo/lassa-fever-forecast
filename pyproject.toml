@@ -16,6 +16,7 @@ dependencies = [
     "pydantic==2.11.7",
     "python-dotenv==1.0.1",
     "pyyaml==6.0.2",
+    "requests==2.32.4",
     "scikit-learn==1.6.1",
     "scipy==1.15.3",
     "seaborn==0.13.2",
@@ -34,6 +35,7 @@ packages = ["src/lassa_fever_forecast"]
 dev = [
     "black==25.1.0",
     "pre-commit==4.2.0",
+    "pyright==1.1.403",
     "pytest==8.4.1",
     "pytest-cov==6.2.1",
     "ruff==0.12.0",

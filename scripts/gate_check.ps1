@@ -12,6 +12,17 @@ Write-Host ""
 
 .\scripts\test.ps1
 
+Write-Host "Auto-fixing Ruff issues..."
+uv run ruff check . --fix
+
+Write-Host ""
+Write-Host "Running Ruff..."
+uv run ruff check .
+
+Write-Host ""
+Write-Host "Running Formatter..."
+uv run ruff format .
+
 Write-Host ""
 Write-Host "Checking package..."
 

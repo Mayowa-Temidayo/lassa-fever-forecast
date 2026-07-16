@@ -1,0 +1,23 @@
+epidemiology:
+  enabled: true
+  source: "NCDC"
+  filename: "lassa_surveillance.csv"
+  raw_directory: "data/raw/epidemiology"
+
+weather:
+  enabled: true
+  source: "NASA_POWER"
+  filename: "weather.csv"
+  raw_directory: "data/raw/weather"
+
+population:
+  enabled: true
+  source: "GRID3"
+  filename: "population.csv"
+  raw_directory: "data/raw/population"
+
+geography:
+  enabled: true
+  source: "GRID3"
+  filename: "geography.geojson"
+  raw_directory: "data/raw/geography"
