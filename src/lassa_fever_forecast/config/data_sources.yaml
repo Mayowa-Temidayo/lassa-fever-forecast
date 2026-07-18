@@ -1,7 +1,14 @@
 epidemiology:
   enabled: true
-  source: "NCDC"
-  filename: "lassa_surveillance.csv"
+  source: "KAGGLE"
+  dataset_id: "emmanuelniyioriolowo/ncdc-lassa-fever-timeseries-20202025"
+
+  files:
+    full: "lassa_fever_timeseries_full.csv"
+    minimal: "lassa_fever_timeseries_minimal.csv"
+
+  default: "full"
+
   raw_directory: "data/raw/epidemiology"
 
 weather:

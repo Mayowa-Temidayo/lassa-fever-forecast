@@ -2,30 +2,61 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from lassa_fever_forecast.config.config_loader import load_data_sources
+import yaml
+from kaggle.api.kaggle_api_extended import KaggleApi
+
 from lassa_fever_forecast.config.paths import PROJECT_ROOT
 
+CONFIG_PATH = (
+    PROJECT_ROOT / "src" / "lassa_fever_forecast" / "config" / "data_sources.yaml"
+)
 
-def get_dataset_path() -> Path:
+
+def _config() -> dict:
+    with CONFIG_PATH.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
+        return yaml.safe_load(file)
+
+
+def fetch(
+    dataset: str | None = None,
+) -> Path:
     """
-    Return the expected location of the epidemiology dataset.
+    Returns the requested epidemiology dataset.
+
+    Downloads automatically if missing.
     """
 
-    config = load_data_sources()
+    cfg = _config()["epidemiology"]
 
-    dataset = config["epidemiology"]
+    raw_dir = PROJECT_ROOT / cfg["raw_directory"]
 
-    return PROJECT_ROOT / dataset["raw_directory"] / dataset["filename"]
+    raw_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
+    selected = dataset or cfg["default"]
 
-def fetch() -> Path:
-    """
-    Return the epidemiology dataset path.
-    """
+    filename = cfg["files"][selected]
 
-    dataset_path = get_dataset_path()
+    dataset_path = raw_dir / filename
+
+    if dataset_path.exists():
+        return dataset_path
+
+    api = KaggleApi()
+    api.authenticate()
+
+    api.dataset_download_files(
+        cfg["dataset_id"],
+        path=raw_dir,
+        unzip=True,
+    )
 
     if not dataset_path.exists():
-        raise FileNotFoundError(f"Dataset not found:\n{dataset_path}")
+        raise FileNotFoundError(f"Downloaded dataset not found:\n{dataset_path}")
 
     return dataset_path
